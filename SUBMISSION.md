@@ -239,22 +239,54 @@ Example: "I chose to use a simple array filter for appointments instead of imple
 
 ---
 
-## 📚 Resources Used
+## 📚 Libraries & Tools Used
 
-Did you reference any documentation or resources?
+### Third-Party Libraries
+Did you use any additional libraries beyond what was provided?
 
+**Calendar/UI Libraries:**
+- [ ] react-big-calendar
+- [ ] FullCalendar
+- [ ] shadcn/ui
+- [ ] Radix UI
+- [ ] Headless UI
+- [ ] Other: _________________
+
+**Utility Libraries:**
+- [ ] lodash
+- [ ] ramda
+- [ ] Other: _________________
+
+**Why did you choose these libraries?**
+
+[Explain your library selection and how they helped]
+
+---
+
+### AI Tools & Documentation
+
+**AI Coding Assistants:**
+- [ ] GitHub Copilot
+- [ ] ChatGPT
+- [ ] Claude
+- [ ] Other: _________________
+
+**How did you use AI tools?**
+
+[Be honest - we understand AI is a normal part of modern development. What we want to know:
+- What tasks did you use AI for? (boilerplate, debugging, architecture advice, etc.)
+- How did you validate and understand AI-generated code?
+- What did you modify or customize from AI suggestions?]
+
+**Documentation & Resources:**
 - [ ] React documentation
 - [ ] Next.js documentation
 - [ ] date-fns documentation
 - [ ] TypeScript documentation
 - [ ] Tailwind CSS documentation
+- [ ] Library-specific documentation
 - [ ] Stack Overflow / GitHub Issues
-- [ ] AI assistants (ChatGPT, Copilot, etc.) - describe usage below
 - [ ] Other: _________________
-
-**If you used AI tools, how did you use them?**
-
-[Be honest - we understand AI is a normal part of modern development]
 
 ---
 

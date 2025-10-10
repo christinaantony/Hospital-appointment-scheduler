@@ -310,13 +310,37 @@ import { format, addDays, isSameDay } from 'date-fns';
 
 ---
 
+## 📚 Libraries & Tools
+
+### You May Use:
+- ✅ **Calendar/Date Libraries**: react-big-calendar, FullCalendar, @tanstack/react-table, etc.
+- ✅ **UI Component Libraries**: shadcn/ui, Radix UI, Headless UI, etc.
+- ✅ **Utility Libraries**: lodash, ramda, date-fns (already included), etc.
+- ✅ **AI Coding Assistants**: GitHub Copilot, ChatGPT, Claude, etc.
+
+**What We're Evaluating:**
+- Understanding of library APIs and integration
+- Ability to customize and adapt libraries to requirements
+- Clean integration with your architecture
+- Proper TypeScript usage with third-party libraries
+
+### Using AI Tools:
+We understand AI tools are part of modern development. Feel free to use them! What matters is:
+- ✅ You understand the code AI generates
+- ✅ You can explain your architectural decisions
+- ✅ You adapt and customize AI-generated code appropriately
+- ✅ Please mention in SUBMISSION.md which AI tools you used and how
+
+**Pro tip:** Using a well-integrated calendar library with clean architecture often demonstrates better engineering judgment than building from scratch under time pressure.
+
+---
+
 ## ❌ What NOT to Do
 
 - ❌ Don't build drag-and-drop (out of scope)
 - ❌ Don't implement appointment creation/editing
 - ❌ Don't add authentication/authorization
 - ❌ Don't build a backend API
-- ❌ Don't use a calendar library (we want to see your implementation)
 
 ---
 
