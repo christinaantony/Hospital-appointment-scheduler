@@ -20,6 +20,7 @@ import {
   getDoctorById,
   getPatientById,
 } from '@/data/mockData';
+import { isSameDay, isWithinInterval, parseISO } from 'date-fns';
 
 /**
  * AppointmentService class
@@ -34,8 +35,7 @@ export class AppointmentService {
    * TODO: Implement this method
    */
   getAppointmentsByDoctor(doctorId: string): Appointment[] {
-    // TODO: Implement - filter MOCK_APPOINTMENTS by doctorId
-    throw new Error('Not implemented - getAppointmentsByDoctor');
+    return MOCK_APPOINTMENTS.filter((apt) => apt.doctorId === doctorId);
   }
 
   /**
@@ -47,9 +47,9 @@ export class AppointmentService {
    * @returns Array of appointments for that doctor on that date
    */
   getAppointmentsByDoctorAndDate(doctorId: string, date: Date): Appointment[] {
-    // TODO: Implement - filter by doctor AND date
-    // Hint: You'll need to compare dates properly (same day, ignoring time)
-    throw new Error('Not implemented - getAppointmentsByDoctorAndDate');
+    return this.getAppointmentsByDoctor(doctorId).filter((apt) =>
+      isSameDay(parseISO(apt.startTime), date)
+    );
   }
 
   /**
@@ -66,8 +66,17 @@ export class AppointmentService {
     startDate: Date,
     endDate: Date
   ): Appointment[] {
-    // TODO: Implement - filter by doctor AND date range
-    throw new Error('Not implemented - getAppointmentsByDoctorAndDateRange');
+    const range = { start: startDate, end: endDate } as const;
+    return this.getAppointmentsByDoctor(doctorId).filter((apt) => {
+      const start = parseISO(apt.startTime);
+      const end = parseISO(apt.endTime);
+      // Overlap if either endpoint is within range or appointment spans the whole range
+      return (
+        isWithinInterval(start, range) ||
+        isWithinInterval(end, range) ||
+        (start < startDate && end > endDate)
+      );
+    });
   }
 
   /**
@@ -78,9 +87,10 @@ export class AppointmentService {
    * TODO: Implement this helper method
    */
   getPopulatedAppointment(appointment: Appointment): PopulatedAppointment | null {
-    // TODO: Implement - merge appointment with patient and doctor data
-    // Hint: Use getDoctorById and getPatientById from mockData
-    throw new Error('Not implemented - getPopulatedAppointment');
+    const doctor = getDoctorById(appointment.doctorId);
+    const patient = getPatientById(appointment.patientId);
+    if (!doctor || !patient) return null;
+    return { ...appointment, doctor, patient };
   }
 
   /**
@@ -89,8 +99,7 @@ export class AppointmentService {
    * TODO: Implement this method
    */
   getAllDoctors(): Doctor[] {
-    // TODO: Implement - return all doctors
-    throw new Error('Not implemented - getAllDoctors');
+    return MOCK_DOCTORS;
   }
 
   /**
@@ -99,8 +108,7 @@ export class AppointmentService {
    * TODO: Implement this method
    */
   getDoctorById(id: string): Doctor | undefined {
-    // TODO: Implement - find doctor by ID
-    throw new Error('Not implemented - getDoctorById');
+    return getDoctorById(id);
   }
 
   /**

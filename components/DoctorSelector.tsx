@@ -15,7 +15,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import type React from 'react';
 import type { Doctor } from '@/types';
+import { appointmentService } from '@/services/appointmentService';
 
 interface DoctorSelectorProps {
   selectedDoctorId: string;
@@ -43,19 +45,12 @@ export function DoctorSelector({
 
   // TODO: Fetch doctors
   useEffect(() => {
-    // Option 1: Use appointmentService to get doctors
-    // const allDoctors = appointmentService.getAllDoctors();
-    // setDoctors(allDoctors);
-
-    // Option 2: Import MOCK_DOCTORS directly
-    // import { MOCK_DOCTORS } from '@/data/mockData';
-    // setDoctors(MOCK_DOCTORS);
-
-    console.log('TODO: Fetch doctors');
+    const allDoctors = appointmentService.getAllDoctors();
+    setDoctors(allDoctors);
   }, []);
 
   // Find currently selected doctor for display
-  const selectedDoctor = doctors.find((d) => d.id === selectedDoctorId);
+  const selectedDoctor = doctors.find((d: Doctor) => d.id === selectedDoctorId);
 
   return (
     <div className="doctor-selector">
@@ -64,15 +59,15 @@ export function DoctorSelector({
       {/* Option 1: Native select */}
       <select
         value={selectedDoctorId}
-        onChange={(e) => onDoctorChange(e.target.value)}
-        className="block w-full px-4 py-2 pr-8 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => onDoctorChange(e.target.value)}
+        className="block w-64 px-4 py-2 pr-8 text-sm border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <option value="">Select a doctor...</option>
         {/* TODO: Map over doctors and create options */}
-        {doctors.map((doctor) => (
+        {doctors.map((doctor: Doctor) => (
           <option key={doctor.id} value={doctor.id}>
             {/* TODO: Format display text (e.g., "Dr. Sarah Chen - Cardiology") */}
-            Dr. {doctor.name} - {doctor.specialty}
+            {doctor.name} - {doctor.specialty}
           </option>
         ))}
       </select>
